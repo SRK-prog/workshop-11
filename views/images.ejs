@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container">
+    <h3>All Images</h3>
+    <% for (var i = 0; i < Files.length; i++) { %>
+    <form class="mb-3" action="/delete/<%= Files[i] %>" method="POST">
+      <img class="img-fluid" src="/uploads/<%=Files[i]%>" alt="" />
+      <div class="d-flex justify-content-between mt-3">
+        <h5 id="filename"><%= Files[i]%></h5>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+    </form>
+    <form
+      action="/rename/<%= Files[i] %>"
+      method="POST"
+      class="input-group mb-3"
+    >
+      <input class="form-control" type="text" id="rename" name="rename" />
+      <button class="btn btn-success btn-lg" id="rename-button">Rename</button>
+    </form>
+    <% } %>
+  </body>
+</html>
